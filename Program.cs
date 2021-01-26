@@ -129,6 +129,7 @@ namespace bezier_curve_calculator {
                     Console.Write($"P{bc.n-i},{i}({CP[bc.n - i][i].x}; {CP[bc.n - i][i].y}), ");
                 }
             }
+            PrintSeparator();
         }
 
         static void RaiseDegree() {

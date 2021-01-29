@@ -64,7 +64,7 @@ namespace bezier_curve_calculator {
 
             Console.WriteLine();
             Console.WriteLine($"C(u) = (x(u), y(u))");
-            Console.WriteLine($"C(u = 0,25) = ({xu}, {yu})");
+            Console.WriteLine($"C(u = {bc.u}) = ({xu}; {yu})");
             
             PrintSeparator();
             Console.WriteLine("Bernstein Coeficients");
@@ -89,12 +89,12 @@ namespace bezier_curve_calculator {
                     if (i == 0) {
                         CP[i][j].x = bc.controlPoints[j].x;
                         CP[i][j].y = bc.controlPoints[j].y;
-                        Console.WriteLine($"P{j} =({CP[i][j].x}, {CP[i][j].y})");
+                        Console.WriteLine($"P{j} =({CP[i][j].x}; {CP[i][j].y})");
                     }
                     else {
                         CP[i][j].x = Math.Round((1 - bc.u) * CP[i - 1][j].x + bc.u * CP[i - 1][j + 1].x, 4);
                         CP[i][j].y = Math.Round((1 - bc.u) * CP[i - 1][j].y + bc.u * CP[i - 1][j + 1].y, 4);
-                        Console.WriteLine($"P{i}{j}=({CP[i][j].x}, {CP[i][j].y})");
+                        Console.WriteLine($"P{i},{j}=({CP[i][j].x}; {CP[i][j].y})");
                     }
                 }
                 Console.WriteLine();
@@ -109,7 +109,7 @@ namespace bezier_curve_calculator {
                     Console.Write($"P{i}({CP[i][0].x}; {CP[i][0].y}), ");
                 }
                 else {
-                    Console.Write($"P{i}0({CP[i][0].x}; {CP[i][0].y})");
+                    Console.Write($"P{i},0({CP[i][0].x}; {CP[i][0].y})");
                     if(i != bc.n) {
                         Console.Write(", ");
                     }
@@ -159,7 +159,7 @@ namespace bezier_curve_calculator {
                         raisedCurve.controlPoints[j].x = Math.Round((((decimal)j / raisedCurve.n) * currentCurve.controlPoints[j - 1].x) + (1 - ((decimal)j /raisedCurve.n))*currentCurve.controlPoints[j].x, 4);
                         raisedCurve.controlPoints[j].y = Math.Round(((((decimal)j / raisedCurve.n) * currentCurve.controlPoints[j - 1].y)) + (1 - ((decimal)j /raisedCurve.n))*currentCurve.controlPoints[j].y, 4);
                     }
-                    Console.WriteLine($"P{j} ({raisedCurve.controlPoints[j].x}, {raisedCurve.controlPoints[j].y})");
+                    Console.WriteLine($"P{j} ({raisedCurve.controlPoints[j].x}; {raisedCurve.controlPoints[j].y})");
                 }
                 PrintSeparator();
                 currentCurve = raisedCurve;
